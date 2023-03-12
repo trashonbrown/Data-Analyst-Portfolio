@@ -1,3 +1,4 @@
+
 -- Populate Property Address data
 
 SELECT * FROM nashville
@@ -11,7 +12,7 @@ SELECT a.UniqueID, b.PropertyAddress
 FROM nashville a
 JOIN nashville b
 	ON a.ParcelID = b.ParcelID
-	AND a.UniqueID &lt;&gt; b.UniqueID
+	AND a.UniqueID <> b.UniqueID
 	WHERE a.PropertyAddress IS NULL;
 
 -- Update the original table with the values from the temporary table
@@ -87,7 +88,7 @@ SET OwnerSplitState = CASE WHEN OwnerAddress LIKE '% TN' THEN 'TN' ELSE NULL END
 
 SELECT * FROM nashville
 
--- Change Y and N to Yes and No in &quot;Sold as Vacant&quot; field
+-- Change Y and N to Yes and No in "Sold as Vacant" field
 
 
 SELECT DISTINCT(SoldAsVacant), COUNT(SoldAsVacant)
@@ -128,14 +129,14 @@ WHERE UniqueID IN (
            ) row_num
     FROM nashville
   ) t
-  WHERE row_num &gt; 1
+  WHERE row_num > 1
 );
 --Order by PropertyAddress
 
 SELECT ParcelID, PropertyAddress, SalePrice, SaleDate, LegalReference, COUNT(*) as num_duplicates
 FROM nashville
 GROUP BY ParcelID, PropertyAddress, SalePrice, SaleDate, LegalReference
-HAVING COUNT(*) &gt; 1;
+HAVING COUNT(*) > 1;
 
 
 -- Delete Unused Columns
