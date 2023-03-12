@@ -156,6 +156,3 @@ DROP TABLE nashville;
 
 -- Rename the new table to the old table name
 ALTER TABLE nashville_new RENAME TO nashville;
-
-
-</sql><current_tab id="0"/></tab_sql></sqlb_project>
